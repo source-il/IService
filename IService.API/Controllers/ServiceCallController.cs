@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using IService.API.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -19,7 +20,9 @@ namespace IService.API.Controllers
             _context = context;
         }
         // GET api/values
+        [Authorize]
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> GetSerivceCalls()
         {
             var sercalls = await _context.ServiceCalls.ToListAsync();
@@ -28,6 +31,7 @@ namespace IService.API.Controllers
         }
 
         // GET api/values/5
+        [AllowAnonymous]
         [HttpGet("{id}")]
         public async Task<IActionResult> GetServiceCall(int id)
         {
