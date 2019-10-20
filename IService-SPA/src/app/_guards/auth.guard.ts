@@ -1,3 +1,4 @@
+import { UserService } from './../_services/user.service';
 import { AlertifyService } from './../_services/alertify.service';
 import { AuthService } from './../_services/auth.service';
 import { Injectable } from '@angular/core';
